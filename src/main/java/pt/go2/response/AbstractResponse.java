@@ -33,6 +33,7 @@ public abstract class AbstractResponse {
 	public static final String MIME_TEXT_HTML = "text/html";
 	public static final String MIME_TEXT_PLAIN = "text/plain";
 	public static final String MIME_TEXT_XML = "text/xml";
+	public static final String MIME_IMG_X_ICON = "image/x-icon";
 
 	/**
 	 * Http Status code for response

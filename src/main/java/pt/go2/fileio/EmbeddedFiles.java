@@ -14,7 +14,7 @@ public class EmbeddedFiles implements FileSystemInterface {
 
 	public EmbeddedFiles(Configuration config) throws IOException {
 
-		final byte[] index, ajax, robots, map, css;
+		final byte[] index, ajax, robots, map, css, icon;
 
 		index = SmartTagParser.read(Resources.class
 				.getResourceAsStream("/index.html"));
@@ -31,6 +31,9 @@ public class EmbeddedFiles implements FileSystemInterface {
 		css = SmartTagParser.read(Resources.class
 				.getResourceAsStream("/screen.css"));
 
+		icon = SmartTagParser.read(Resources.class
+				.getResourceAsStream("/favicon.ico"));
+
 		this.pages.put("/", new GzipResponse(index,
 				AbstractResponse.MIME_TEXT_HTML));
 		this.pages.put("ajax.js", new GzipResponse(ajax,
@@ -44,6 +47,9 @@ public class EmbeddedFiles implements FileSystemInterface {
 
 		this.pages.put("screen.css", new GzipResponse(css,
 				AbstractResponse.MIME_TEXT_CSS));
+
+		this.pages.put("favicon.ico", new GzipResponse(icon,
+				AbstractResponse.MIME_IMG_X_ICON));
 
 		if (!config.GOOGLE_VERIFICATION.isEmpty()) {
 			this.pages
